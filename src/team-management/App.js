@@ -22,6 +22,19 @@ class App extends Component{
         })
     }
 
+    componentDidUpdate(){
+        localStorage.setItem('characters', JSON.stringify(this.state.characters));
+    }
+
+    componentDidMount(){
+        let data = JSON.parse(localStorage.getItem('characters'));
+        if(data){
+            this.setState({
+                character: data
+            });
+        }
+
+    }
     render(){
         const {characters} = this.state;
         return(
@@ -29,11 +42,11 @@ class App extends Component{
                 <h1>React Tutorial</h1>
                 <p>Add a character with a name and a job to the table.</p>
                 <Table
-                    characterData={characters}
+                    characterData={this.state.characters}
                     removeCharacter={this.removeCharacter}
                 />
                 <h3>Add New</h3>
-                <Form handleSubmit={this.handleSubmit} />
+                <Form handleSubmit={this.handleSubmit} character={this.state.characters}/>
 
             </div>
         )

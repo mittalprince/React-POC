@@ -9,6 +9,7 @@ class Form extends Component{
         };
 
         this.state = this.initialState;
+        this.data = this.props.characters
     }
 
     handleChange = (event)=>{
@@ -19,6 +20,11 @@ class Form extends Component{
     }
 
     onFormSubmit = (event)=>{
+        console.log(this.props);
+        if(!this.state.name || !this.state.job){
+            return;
+        }
+
         event.preventDefault();
         this.props.handleSubmit(this.state);
         this.setState(this.initialState);
@@ -34,16 +40,18 @@ class Form extends Component{
                     name="name" 
                     id="name"
                     value={name} 
-                    onChange={this.handleChange} />
+                    onChange={this.handleChange}
+                    placeholder="Enter Employee Name" />
 
                 <label htmlFor="job">Job</label>
                 <input type="text" 
                     name="job" 
                     id="job"
                     value={job} 
-                    onChange={this.handleChange} />
+                    onChange={this.handleChange} 
+                    placeholder="Enter his job position"/>
 
-                <button type="submit">Submit</button>
+                <button disabled={!this.state.name || !this.state.job} type="submit">Submit</button>
             </form>
         )
     };

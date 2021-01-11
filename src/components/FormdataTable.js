@@ -40,12 +40,12 @@ class FormdataTable extends Component {
                                    <td>{emp.mobile}</td>
                                    <td>{emp.city}</td>
                                    <td>
-                                       <button
+                                       {/* <button
                                            type="button"
                                            onClick={()=>this.handleEdit(index)}
                                            className="btn btn-sm btn-primary">Edit
                                        </button>
-                                       {" | "}
+                                       {" | "} */}
                                        <button
                                            type="button"
                                            onClick={()=>this.handleDelete(index)}

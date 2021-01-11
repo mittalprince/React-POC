@@ -1,21 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{Component} from 'react';
+import Header from './components/Header';
+import Routes from './components/Routes';
+import { BrowserRouter as Router} from 'react-router-dom';
 
-import TeamManagement from './team-management/App';
-
-function App() {
-  return (
-    <div>
-      <div className="App">
-        {/* <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-        </header> */}
-      </div>
-      <div className="container">
-        <TeamManagement/>
-      </div>
-    </div>
-  );
+class App extends Component {
+ state = {  }
+ render() {
+   return (
+   <Router>
+       <Header/>
+       <div className="row">
+           <Routes />
+       </div>
+   </Router>
+   );
+ }
 }
 
 export default App;
